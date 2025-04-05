@@ -9,6 +9,7 @@ const (
 type Marketing struct {
 	Email         MarketingEmailService
 	Transactional TransactionalService
+	Form          FormService
 }
 
 func newMarketing(c *Client) *Marketing {
@@ -18,5 +19,6 @@ func newMarketing(c *Client) *Marketing {
 			client:            c,
 			transactionalPath: fmt.Sprintf("%s/%s/%s", marketingBasePath, c.apiVersion, transactionalBasePath),
 		},
+		Form: NewFormService(c),
 	}
 }
